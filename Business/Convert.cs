@@ -81,9 +81,8 @@ namespace Business
                 }
 
                 bytes = ms.ToArray();
-
-                string testFile = pdfLocation;
-                File.WriteAllBytes(testFile, bytes);
+                
+                File.WriteAllBytes(pdfLocation, bytes);
             }
         }
 
@@ -146,6 +145,7 @@ namespace Business
                 {
                     html += line;
                 }
+                reader.Close();
             }
 
             if (!string.IsNullOrWhiteSpace(cssPath))
@@ -157,6 +157,7 @@ namespace Business
                     {
                         css += line;
                     }
+                    reader.Close();
                 }
             }
 
@@ -197,9 +198,9 @@ namespace Business
                 outPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
             if (string.IsNullOrWhiteSpace(fileName))
-                outPath = Path.GetRandomFileName().Replace(".", "");
+                fileName = Path.GetRandomFileName().Replace(".", "");
 
-            return outPath + fileName;
+            return Path.Combine(outPath, fileName + ".pdf");
         }
     }
 }
