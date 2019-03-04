@@ -32,6 +32,8 @@ namespace HtmlToPdfConverter
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbLibrary = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lbOut1 = new System.Windows.Forms.Label();
@@ -45,6 +47,8 @@ namespace HtmlToPdfConverter
             this.label1 = new System.Windows.Forms.Label();
             this.btnConvertFile = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cbLibrary2 = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.tbFileName = new System.Windows.Forms.TextBox();
             this.tbOutPath = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -58,6 +62,8 @@ namespace HtmlToPdfConverter
             this.rtbCss = new System.Windows.Forms.RichTextBox();
             this.rtbHtml = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.cbOpen2 = new System.Windows.Forms.CheckBox();
+            this.cbOpen1 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -75,6 +81,9 @@ namespace HtmlToPdfConverter
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.cbOpen1);
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.cbLibrary);
             this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.lbOut1);
@@ -94,6 +103,27 @@ namespace HtmlToPdfConverter
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Read From File";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(232, 207);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(38, 13);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Library";
+            // 
+            // cbLibrary
+            // 
+            this.cbLibrary.FormattingEnabled = true;
+            this.cbLibrary.Items.AddRange(new object[] {
+            "ITextSharp",
+            "IronPDF"});
+            this.cbLibrary.SelectedIndex = 0;
+            this.cbLibrary.Location = new System.Drawing.Point(276, 204);
+            this.cbLibrary.Name = "cbLibrary";
+            this.cbLibrary.Size = new System.Drawing.Size(180, 21);
+            this.cbLibrary.TabIndex = 9;
             // 
             // label8
             // 
@@ -192,7 +222,7 @@ namespace HtmlToPdfConverter
             // 
             // btnConvertFile
             // 
-            this.btnConvertFile.Location = new System.Drawing.Point(336, 196);
+            this.btnConvertFile.Location = new System.Drawing.Point(491, 196);
             this.btnConvertFile.Name = "btnConvertFile";
             this.btnConvertFile.Size = new System.Drawing.Size(105, 50);
             this.btnConvertFile.TabIndex = 0;
@@ -202,6 +232,9 @@ namespace HtmlToPdfConverter
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.cbOpen2);
+            this.tabPage2.Controls.Add(this.cbLibrary2);
+            this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.tbFileName);
             this.tabPage2.Controls.Add(this.tbOutPath);
             this.tabPage2.Controls.Add(this.label10);
@@ -222,18 +255,39 @@ namespace HtmlToPdfConverter
             this.tabPage2.Text = "Read From Input";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // cbLibrary2
+            // 
+            this.cbLibrary2.FormattingEnabled = true;
+            this.cbLibrary2.Items.AddRange(new object[] {
+            "ITextSharp",
+            "IronPDF"});
+            this.cbLibrary2.SelectedIndex = 0;
+            this.cbLibrary2.Location = new System.Drawing.Point(454, 343);
+            this.cbLibrary2.Name = "cbLibrary2";
+            this.cbLibrary2.Size = new System.Drawing.Size(161, 21);
+            this.cbLibrary2.TabIndex = 13;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(410, 346);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(38, 13);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Library";
+            // 
             // tbFileName
             // 
             this.tbFileName.Location = new System.Drawing.Point(79, 389);
             this.tbFileName.Name = "tbFileName";
-            this.tbFileName.Size = new System.Drawing.Size(390, 20);
+            this.tbFileName.Size = new System.Drawing.Size(312, 20);
             this.tbFileName.TabIndex = 11;
             // 
             // tbOutPath
             // 
             this.tbOutPath.Location = new System.Drawing.Point(79, 343);
             this.tbOutPath.Name = "tbOutPath";
-            this.tbOutPath.Size = new System.Drawing.Size(390, 20);
+            this.tbOutPath.Size = new System.Drawing.Size(312, 20);
             this.tbOutPath.TabIndex = 10;
             // 
             // label10
@@ -257,7 +311,7 @@ namespace HtmlToPdfConverter
             // lbOut2
             // 
             this.lbOut2.AutoSize = true;
-            this.lbOut2.Location = new System.Drawing.Point(519, 392);
+            this.lbOut2.Location = new System.Drawing.Point(635, 405);
             this.lbOut2.Name = "lbOut2";
             this.lbOut2.Size = new System.Drawing.Size(68, 13);
             this.lbOut2.TabIndex = 7;
@@ -266,7 +320,7 @@ namespace HtmlToPdfConverter
             // 
             // btnConvert
             // 
-            this.btnConvert.Location = new System.Drawing.Point(570, 330);
+            this.btnConvert.Location = new System.Drawing.Point(638, 343);
             this.btnConvert.Name = "btnConvert";
             this.btnConvert.Size = new System.Drawing.Size(110, 44);
             this.btnConvert.TabIndex = 6;
@@ -329,6 +383,26 @@ namespace HtmlToPdfConverter
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // cbOpen2
+            // 
+            this.cbOpen2.AutoSize = true;
+            this.cbOpen2.Location = new System.Drawing.Point(454, 370);
+            this.cbOpen2.Name = "cbOpen2";
+            this.cbOpen2.Size = new System.Drawing.Size(120, 17);
+            this.cbOpen2.TabIndex = 14;
+            this.cbOpen2.Text = "Open when finished";
+            this.cbOpen2.UseVisualStyleBackColor = true;
+            // 
+            // cbOpen1
+            // 
+            this.cbOpen1.AutoSize = true;
+            this.cbOpen1.Location = new System.Drawing.Point(276, 231);
+            this.cbOpen1.Name = "cbOpen1";
+            this.cbOpen1.Size = new System.Drawing.Size(120, 17);
+            this.cbOpen1.TabIndex = 11;
+            this.cbOpen1.Text = "Open when finished";
+            this.cbOpen1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -336,7 +410,7 @@ namespace HtmlToPdfConverter
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Html To Pdf";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -375,6 +449,12 @@ namespace HtmlToPdfConverter
         private System.Windows.Forms.TextBox tbOutPath;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cbLibrary;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cbLibrary2;
+        private System.Windows.Forms.CheckBox cbOpen1;
+        private System.Windows.Forms.CheckBox cbOpen2;
     }
 }
 

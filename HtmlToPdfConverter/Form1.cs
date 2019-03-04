@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
+using Business;
 
 namespace HtmlToPdfConverter
 {
@@ -13,32 +15,41 @@ namespace HtmlToPdfConverter
             tbOutPath.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         }
 
-        private void btnConvert_Click(object sender, EventArgs e)
-        {
-            string html = tbHtmlFile.Text;
-            string css = tbCssFile.Text;
-            //string js = tbJsFile.Text;
-
-            string outPath = tbOutPath.Text;
-            string fileName = tbFileName.Text;
-
-            Business.Convert cn = new Business.Convert();
-            lbOut2.Text = cn.HtmlCssToPdfConvert(html, css, outPath, fileName);
-            lbOut2.Visible = true;
-        }
 
         private void btnConvertFile_Click(object sender, EventArgs e)
         {
             string htmlPath = tbHtmlFile.Text;
             string cssPath = tbCssFile.Text;
-            //string js = tbJsFile.Text;
+            string js = tbJsFile.Text;
 
             string outPath = tbOutPathFile.Text;
             string fileName = tbFileNameFile.Text;
             
-            Business.Convert cn = new Business.Convert();
-            lbOut1.Text = cn.PathPreConvertEvents(htmlPath, cssPath, "", outPath, fileName);
+            ConverterLibrary lib = (ConverterLibrary)Enum.Parse(typeof(ConverterLibrary), cbLibrary.Text, true);
+            lbOut1.Text = ConvertSelector.PathPreConvertEvents(lib, htmlPath, cssPath, js, outPath, fileName);
             lbOut1.Visible = true;
+
+            bool download = cbOpen1.Checked;
+            if (download)
+                Process.Start(lbOut1.Text);
+        }
+
+        private void btnConvert_Click(object sender, EventArgs e)
+        {
+            string html = rtbHtml.Text;
+            string css = rtbCss.Text;
+            string js = rtbJs.Text;
+
+            string outPath = tbOutPath.Text;
+            string fileName = tbFileName.Text;
+            
+            ConverterLibrary lib = (ConverterLibrary)Enum.Parse(typeof(ConverterLibrary), cbLibrary2.Text, true);
+            lbOut2.Text = ConvertSelector.HtmlCssToPdfConvert(lib, html, css, js, outPath, fileName);
+            lbOut2.Visible = true;
+
+            bool download = cbOpen2.Checked;
+            if (download)
+                Process.Start(lbOut2.Text);
         }
 
 
